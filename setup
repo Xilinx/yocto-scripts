@@ -6,6 +6,6 @@ else
 	export ROOT=$(readlink -f ${PWD})
 fi
 
-export TEMPLATECONF=meta-xilinx/conf
+export TEMPLATECONF=meta-petalinux/conf
 export PATH=$PATH:$ROOT/scripts
 source $ROOT/sources/yocto/oe-init-build-env "$@"
