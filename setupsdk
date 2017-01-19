@@ -8,4 +8,4 @@ fi
 
 export TEMPLATECONF=$ROOT/sources/meta-petalinux/conf
 export PATH=$PATH:$ROOT/scripts
-source $ROOT/sources/poky/oe-init-build-env "$@"
+source $ROOT/sources/core/oe-init-build-env "$@"
