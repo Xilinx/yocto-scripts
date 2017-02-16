@@ -1,0 +1,115 @@
+#!/bin/bash
+
+# Tweakables
+images="petalinux-minimal petalinux-image"
+date=$(date +%F)
+
+# Helpers
+function log     { echo "[$(date +'%F %T')] $@" | tee -a "$log_root/seed.$date"; }
+function error() { log "$@" >&2; }
+function die()   { error "$@"; exit 1; }
+
+function log_run() {
+  out="$1"; shift
+  log "RUN: $@"
+  [ -n "$NOT_REALLY" ] || eval "$@ >> $out 2>&1"
+}
+
+function get_machines() {
+  pattern="$1"; shift
+  dirs="$source_dir/meta-xilinx $source_dir/meta-petalinux"
+  for conf in $(find $dirs -path "$pattern"); do
+    basename "$conf" ".conf"
+  done
+}
+
+do_one_build() {
+  local machine="$1";  shift
+  local image="$1";    shift
+  local build=$(echo $machine-$image | sed -e 's/:/-/g' -e 's:-multiconfig-:-:g')
+  local image_dir="$image_root/$build-$date"
+  local sdk="-c populate_sdk_ext"
+  [[ "$machine" == *-generic ]] || sdk=""
+
+  log "building $build $sdk ... "
+  log_run $log_root/$build.$date \
+    MACHINE="$machine" \
+    bitbake $image $sdk "$@" -k
+  log_run $log_root/$build.$date \
+    upload-cache
+
+  deploy_dir="tmp/deploy"
+  [ -d "$deploy_dir" ] || return
+
+  mkdir -p $image_dir
+  if [ -z "$sdk" ]; then
+    log_run $log_root/$build.$date \
+      rsync -av $deploy_dir/images/*/* $image_dir
+  else
+    log_run $log_root/$build.$date \
+      rsync -av $deploy_dir/sdks/*/* $image_dir
+  fi
+  ln -sf $build-$date $image_root/$build
+}
+
+do_one_machine() {
+  local machine="$1";  shift
+  # blow old build in the background
+  mv $build_root $build_root.rm && rm -rf $build_root.rm &
+
+  for image in $images; do
+    # source environment in a sub-shell
+    (
+      source $root_dir/setupsdk "$build_root" > /dev/null
+      eval $(bitbake -e | grep '^BBMULTICONFIG')
+      do_one_build $machine "$image" "$@"
+      for cfg in ${BBMULTICONFIG}; do
+        do_one_build $machine "multiconfig:$cfg:$image" "$@"
+        if [ "$cfg" = "multilib" ]; then
+          do_one_build $machine "multiconfig:$cfg:lib32-$image" "$@"
+        fi
+      done
+    )
+  done
+}
+
+do_all_machines() {
+  machines=$(get_machines "*/conf/machine/*.conf" | sort)
+  for machine in $machines; do
+    do_one_machine "$machine" "$@"
+  done
+}
+
+# ... and the rest...
+self=$(readlink -f "$0")
+scripts_dir=$(dirname "$self")
+root_dir=$(dirname "$scripts_dir")
+source_dir="$root_dir/sources/"
+build_root="$root_dir/build"
+image_root="$root_dir/images"
+log_root="$root_dir/logs"
+sstate_dir="$root_dir/sstate-cache"
+downloads_dir="$root_dir/downloads"
+mkdir -p $build_root $image_root $log_root
+
+log "======================================================="
+log "date         : $date"
+log "root         : $root_dir"
+log "source       : $source_dir"
+log "sstate       : $sstate_dir"
+log "downloads    : $downloads_dir"
+log "build        : $build_root"
+log "images       : $image_root"
+log "logs         : $log_root"
+log ""
+
+[ -n "$NO_SYNC" ] || (
+  log "syncing repositories"
+  log_run $log_root/seed.$date repo sync
+)
+
+do_all_machines "$@"
+
+log "======================================================="
+
+# vim: expandtab:ts=2:sw=2:smartindent
