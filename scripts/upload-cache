@@ -13,6 +13,8 @@ function bbenv() {
   done &&
   rm -f $env
 }
+
+[ -d "$BUILDDIR" ] || die "please source bitbake env"
 bbenv TMPDIR SSTATE_DIR DL_DIR SEED_DOWNLOADS SEED_SSTATE
 
 function relocate() {
@@ -20,13 +22,19 @@ function relocate() {
   local to="$1"; shift
 
   while read f; do
-    base="${f#$from/}"
-    log "seeding $base"
-    mkdir -p $(dirname $to/$base) &&
-    tmp=$(mktemp "$to/$base.XXXXXX") &&
-    cp $from/$base $tmp &&
-    mv $tmp $to/$base &&
-    ln -sf $to/$base $from/$base
+    # we never deal with executables, and we create group shared content
+    # we do so by setting umask in a subshell
+    (
+      umask u=rw,g=rw
+      base="${f#$from/}"
+      [ ! -f "$to/$base" ] &&
+      log "seeding $base" &&
+      mkdir -p $(dirname $to/$base) &&
+      tmp=$(mktemp "$to/$base.XXXXXX") &&
+      cp $from/$base $tmp &&
+      mv $tmp $to/$base &&
+      ln -sf $to/$base $from/$base
+    )
   done
 }
 
