@@ -1,0 +1,47 @@
+#!/bin/bash
+
+function log     { echo "[$(date +'%F %T')] $@"; }
+function error() { log "$@" >&2; }
+function die()   { error "$@"; exit 1; }
+function run()   { [ -n "$NOT_REALLY" ] || eval "$@"; }
+
+function bbenv() {
+  env=$(mktemp)
+  bitbake -e > $env &&
+  for var in "$@"; do
+    eval $(grep "^$var=" $env)
+  done &&
+  rm -f $env
+}
+bbenv TMPDIR SSTATE_DIR DL_DIR SEED_DOWNLOADS SEED_SSTATE
+
+function relocate() {
+  local from="$1"; shift
+  local to="$1"; shift
+
+  while read f; do
+    base="${f#$from/}"
+    log "seeding $base"
+    mkdir -p $(dirname $to/$base) &&
+    tmp=$(mktemp "$to/$base.XXXXXX") &&
+    cp $from/$base $tmp &&
+    mv $tmp $to/$base &&
+    ln -sf $to/$base $from/$base
+  done
+}
+
+function do_downloads() {
+  find "$1" -maxdepth 1 -type f ! -name '*.done' ! -name '*.lock' |
+  relocate "$1" "$2"
+}
+
+function do_sstate() {
+  find "$1" -type f | relocate "$1" "$2"
+}
+
+[ -d "$DL_DIR" -a -d "$SEED_DOWNLOADS" ] &&
+  do_downloads "$DL_DIR" "$SEED_DOWNLOADS"
+[ -d "$SSTATE_DIR" -a -d "$SEED_SSTATE" ] &&
+  do_sstate $SSTATE_DIR "$SEED_SSTATE"
+
+# vim: expandtab:ts=2:sw=2:smartindent
