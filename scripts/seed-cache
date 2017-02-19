@@ -9,6 +9,18 @@ function log     { echo "[$(date +'%F %T')] $@" | tee -a "$log_root/seed.$date";
 function error() { log "$@" >&2; }
 function die()   { error "$@"; exit 1; }
 
+function bbenv() {
+  env=$(mktemp)
+  bitbake -e > $env &&
+  for var in "$@"; do
+    eval $(grep "^$var=" $env)
+  done &&
+  rm -f $env
+}
+
+[ -d "$BUILDDIR" ] || die "please source bitbake env"
+bbenv DEPLOY_DIR BBMULTICONFIG TMPDIR BUILDDIR
+
 function log_run() {
   out="$1"; shift
   log "RUN: $@"
@@ -38,38 +50,30 @@ do_one_build() {
   log_run $log_root/$build.$date \
     upload-cache
 
-  deploy_dir="tmp/deploy"
-  [ -d "$deploy_dir" ] || return
+  [ -d "$DEPLOY_DIR" ] || return
 
   mkdir -p $image_dir
   if [ -z "$sdk" ]; then
     log_run $log_root/$build.$date \
-      rsync -av $deploy_dir/images/*/* $image_dir
+      rsync -av $DEPLOY_DIR/images/*/* $image_dir
   else
     log_run $log_root/$build.$date \
-      rsync -av $deploy_dir/sdks/*/* $image_dir
+      rsync -av $DEPLOY_DIR/sdk/*/* $image_dir
   fi
   ln -sf $build-$date $image_root/$build
+  rm -rf ${TMPDIR}
 }
 
 do_one_machine() {
   local machine="$1";  shift
-  # blow old build in the background
-  mv $build_root $build_root.rm && rm -rf $build_root.rm &
-
   for image in $images; do
-    # source environment in a sub-shell
-    (
-      source $root_dir/setupsdk "$build_root" > /dev/null
-      eval $(bitbake -e | grep '^BBMULTICONFIG')
-      do_one_build $machine "$image" "$@"
-      for cfg in ${BBMULTICONFIG}; do
-        do_one_build $machine "multiconfig:$cfg:$image" "$@"
-        if [ "$cfg" = "multilib" ]; then
-          do_one_build $machine "multiconfig:$cfg:lib32-$image" "$@"
-        fi
-      done
-    )
+    do_one_build $machine "$image" "$@"
+    for cfg in ${BBMULTICONFIG}; do
+      do_one_build $machine "multiconfig:$cfg:$image" "$@"
+      if [ "$cfg" = "multilib" ]; then
+        do_one_build $machine "multiconfig:$cfg:lib32-$image" "$@"
+      fi
+    done
   done
 }
 
@@ -85,12 +89,9 @@ self=$(readlink -f "$0")
 scripts_dir=$(dirname "$self")
 root_dir=$(dirname "$scripts_dir")
 source_dir="$root_dir/sources/"
-build_root="$root_dir/build"
-image_root="$root_dir/images"
-log_root="$root_dir/logs"
-sstate_dir="$root_dir/sstate-cache"
-downloads_dir="$root_dir/downloads"
-mkdir -p $build_root $image_root $log_root
+image_root="${BUILDDIR}/images"
+log_root="${BUILDDIR}/seed-cache-logs"
+mkdir -p $image_root $log_root
 
 log "======================================================="
 log "date         : $date"
@@ -98,9 +99,9 @@ log "root         : $root_dir"
 log "source       : $source_dir"
 log "sstate       : $sstate_dir"
 log "downloads    : $downloads_dir"
-log "build        : $build_root"
 log "images       : $image_root"
 log "logs         : $log_root"
+log "multiconfig  : $BBMULTICONFIG"
 log ""
 
 [ -n "$NO_SYNC" ] || (
@@ -111,5 +112,7 @@ log ""
 do_all_machines "$@"
 
 log "======================================================="
+
+[ -z "FOREVER" ] || exec "$0" "$@"
 
 # vim: expandtab:ts=2:sw=2:smartindent
