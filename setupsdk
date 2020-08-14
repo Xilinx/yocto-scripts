@@ -9,4 +9,3 @@ fi
 export TEMPLATECONF=$ROOT/sources/meta-petalinux/conf
 export PATH=$PATH:$ROOT/scripts
 source $ROOT/sources/core/oe-init-build-env "$@"
-ln -sf $ROOT/conf/site.conf conf/site.conf
