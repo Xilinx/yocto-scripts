@@ -8,3 +8,7 @@
 /downloads/**
 /sstate-cache
 /sstate-cache/**
+/logs
+/logs/**
+/images
+/images/**

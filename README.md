@@ -1,4 +1,5 @@
 Script for Yocto integration
+=============================================
 
 This repository is not meant to be cloned directly.  Please clone
 https://github.com/Xilinx/yocto-manifests instead.
