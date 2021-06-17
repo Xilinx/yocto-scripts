@@ -6,6 +6,6 @@ else
 	export ROOT=$(readlink -f ${PWD})
 fi
 
-export TEMPLATECONF=$ROOT/sources/meta-petalinux/conf
+export TEMPLATECONF=$ROOT/sources/meta-xilinx-internal/conf
 export PATH=$PATH:$ROOT/scripts
 source $ROOT/sources/core/oe-init-build-env "$@"
