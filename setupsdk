@@ -7,5 +7,9 @@ else
 fi
 
 export TEMPLATECONF=$ROOT/sources/meta-petalinux/conf
+# Use the internal layer, if it's checked out
+if [ -d $ROOT/sources/meta-xilinx-internal ]; then
+    export TEMPLATECONF=$ROOT/sources/meta-xilinx-internal/conf
+fi
 export PATH=$PATH:$ROOT/scripts
 source $ROOT/sources/core/oe-init-build-env "$@"
