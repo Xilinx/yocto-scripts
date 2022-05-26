@@ -12,4 +12,7 @@ if [ -d $ROOT/sources/meta-xilinx-internal ]; then
     export TEMPLATECONF=$ROOT/sources/meta-xilinx-internal/conf
 fi
 export PATH=$PATH:$ROOT/scripts
+if [ -d $ROOT/sources/meta-xilinx-internal/scripts ]; then
+        export PATH=$PATH:$ROOT/sources/meta-xilinx-internal/scripts
+fi
 source $ROOT/sources/core/oe-init-build-env "$@"
