@@ -6,10 +6,10 @@ else
 	export ROOT=$(readlink -f ${PWD})
 fi
 
-export TEMPLATECONF=$ROOT/sources/meta-petalinux/conf
+export TEMPLATECONF=$ROOT/sources/meta-petalinux/conf/templates/default
 # Use the internal layer, if it's checked out
 if [ -d $ROOT/sources/meta-xilinx-internal ]; then
-    export TEMPLATECONF=$ROOT/sources/meta-xilinx-internal/conf
+    export TEMPLATECONF=$ROOT/sources/meta-xilinx-internal/conf/templates/default
 fi
 export PATH=$PATH:$ROOT/scripts
 if [ -d $ROOT/sources/meta-xilinx-internal/scripts ]; then
