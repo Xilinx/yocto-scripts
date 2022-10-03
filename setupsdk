@@ -15,4 +15,14 @@ export PATH=$PATH:$ROOT/scripts
 if [ -d $ROOT/sources/meta-xilinx-internal/scripts ]; then
         export PATH=$PATH:$ROOT/sources/meta-xilinx-internal/scripts
 fi
+
+# Translate environment variables old to new
+if [ -n "${BB_ENV_WHITELIST}" ]; then
+   export BB_ENV_PASSTHROUGH="${BB_ENV_WHITELIST}"
+   unset BB_ENV_WHITELIST
+fi
+if [ -n "${BB_ENV_EXTRAWHITE}" ]; then
+   export BB_ENV_PASSTHROUGH_ADDITIONS="${BB_ENV_EXTRAWHITE}"
+   unset BB_ENV_EXTRAWHITE
+fi
 source $ROOT/sources/core/oe-init-build-env "$@"
