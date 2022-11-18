@@ -12,8 +12,8 @@ if [ -d $ROOT/sources/meta-xilinx-internal ]; then
     export TEMPLATECONF=$ROOT/sources/meta-xilinx-internal/conf/templates/default
 fi
 export PATH=$PATH:$ROOT/scripts
-if [ -d $ROOT/sources/meta-xilinx-internal/scripts ]; then
-        export PATH=$PATH:$ROOT/sources/meta-xilinx-internal/scripts
+if [ -d $ROOT/sources/meta-xilinx/meta-xilinx-core/gen-machine-conf ]; then
+        export PATH=$PATH:$ROOT/sources/meta-xilinx/meta-xilinx-core/gen-machine-conf
 fi
 
 # Translate environment variables old to new
