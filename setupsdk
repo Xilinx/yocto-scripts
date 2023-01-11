@@ -25,4 +25,4 @@ if [ -n "${BB_ENV_EXTRAWHITE}" ]; then
    export BB_ENV_PASSTHROUGH_ADDITIONS="${BB_ENV_EXTRAWHITE}"
    unset BB_ENV_EXTRAWHITE
 fi
-source $ROOT/sources/core/oe-init-build-env "$@"
+source $ROOT/sources/poky/oe-init-build-env "$@"
