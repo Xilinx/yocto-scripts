@@ -18,10 +18,12 @@ fi
 
 # Translate environment variables old to new
 if [ -n "${BB_ENV_WHITELIST}" ]; then
+   echo "WARNING: BB_ENV_WHITELIST is obsolete, please use BB_ENV_PASSTHROUGH"
    export BB_ENV_PASSTHROUGH="${BB_ENV_WHITELIST}"
    unset BB_ENV_WHITELIST
 fi
 if [ -n "${BB_ENV_EXTRAWHITE}" ]; then
+   echo "WARNING: BB_ENV_EXTRAWHITE is obsolete, please use BB_ENV_PASSTHROUGH_ADDITIONS"
    export BB_ENV_PASSTHROUGH_ADDITIONS="${BB_ENV_EXTRAWHITE}"
    unset BB_ENV_EXTRAWHITE
 fi
