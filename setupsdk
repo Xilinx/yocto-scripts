@@ -15,6 +15,11 @@ if [ -d $ROOT/sources/meta-xilinx-internal ]; then
     fi
 fi
 export PATH=$PATH:$ROOT/scripts
+# For internal users gen-machine-conf path
+if [ -d $ROOT/sources/meta-xilinx-internal/meta-xilinx-core/gen-machine-conf ]; then
+	export PATH=$PATH:$ROOT/sources/meta-xilinx-internal/meta-xilinx-core/gen-machine-conf
+fi
+# For public users gen-machine-conf path
 if [ -d $ROOT/sources/meta-xilinx/meta-xilinx-core/gen-machine-conf ]; then
         export PATH=$PATH:$ROOT/sources/meta-xilinx/meta-xilinx-core/gen-machine-conf
 fi
