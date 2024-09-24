@@ -1,0 +1,275 @@
+BY DOWNLOADING, COPYING, INSTALLING, OR USING THE SOFTWARE, LICENSEE AGREES TO THE TERMS OF THIS AGREEMENT.
+
+ON Semiconductor
+AP1302 ISP Firmware License Agreement
+
+IMPORTANT - READ BEFORE DOWNLOADING, COPYING, INSTALLING, OR USING.
+
+DO NOT USE OR INSTALL THIS SOFTWARE UNTIL YOU (THE "LICENSEE") HAVE CAREFULLY READ THE
+FOLLOWING TERMS AND CONDITIONS. BY DOWNLOADING, COPYING, INSTALLING, OR USING THE
+SOFTWARE, YOU AGREE TO THE TERMS OF THIS AGREEMENT. IF YOU DO NOT WISH TO SO AGREE, DO
+NOT DOWNLOAD, COPY, INSTALL, OR USE THE SOFTWARE.
+
+If you agree to this AP1302 ISP Firmware License Agreement ("Agreement") on behalf of a company,
+you represent and warrant that you have authority to bind such company to this Agreement, and your
+agreement to these terms will be regarded as the agreement of such company. In that event,
+"Licensee" herein refers to such company.  This Agreement is a legal contract between Licensee and
+Semiconductor Components Industries, LLC a Delaware limited liability company (d/b/a ON
+Semiconductor) having a place of business at 5005 E. McDowell Road, Phoenix, Arizona 85008, U.S.A.,
+("ON SEMICONDUCTOR").
+
+In consideration of the premises, covenants and representations set forth herein, License agrees to be
+legally bound as follows:
+
+1.	 Delivery of Software.   Licensee agrees that it has received a copy of the Software (defined in
+Exhibit A) for the purpose of enabling Licensee to incorporate the functionality of such Software into
+Licensee Products (defined in Exhibit A) for use only with ON Semiconductor Products (defined in
+Exhibit A). Licensee agrees that the delivery of the Software does not constitute a sale and the
+Software is only licensed.
+
+2.           License.
+
+2.1         License Grant.
+a)	ON Semiconductor hereby grants to Licensee a fully paid-up, royalty-free, non-exclusive, non-
+transferable license to: (i) use the Software with Xilinx SOM Starter Kits; (ii) use the Software with
+Licensee Products solely for the purpose of enabling such Licensee Products to operate or interface
+with ON Semiconductor Products; (iii) distribute the Software only in a format which is executable by a
+machine and not human-readable, to Licensee's third party end-user customers ("Customers") for use
+by such Customers strictly in conjunction with Licensee Products and solely for the purpose of enabling
+such Licensee Products to operate or interface with ON Semiconductor Products; and (iv) copy the
+Software as necessary for such use.
+b)	Licensee may only distribute the Software in binary form: (i) embedded in a Licensee Product,
+or (ii) under the terms and conditions of this AP1302 ISP Firmware License Agreement by including a
+copy of this Agreement with Licensee's distribution of the Software.
+c)	Notwithstanding anything herein to the contrary, no license or right of any kind is granted
+herein by ON Semiconductor (or its licensors/suppliers) to Licensee to disclose, distribute or otherwise
+provide the Software in source code format (i.e. customarily read and edited by humans), or register
+transfer level code (i.e. code written in a hardware description language), to Licensee's customers or to
+any third party-end user.
+d)	Licensee agrees that it shall not take any actions whatsoever that could or would cause the
+Software or any portion thereof to become subject to the GNU General Public License (GPL), GNU
+Lesser General Public License (LGPL), Mozilla Public License (MPL), Artistic License, Apache License, Q
+Public License, IBM Public License, or any other open source license requiring the distribution of the
+Software or any part thereof in any format.
+e)	Licensee shall retain, and shall require any third parties to retain, all copyright and other notices
+within the Software.
+f)	The Software is licensed for use only with the ON Semiconductor Products.  Use of the Software
+with non-ON Semiconductor Products is not licensed hereunder.
+2.2         Ownership; No Implied Licenses. Subject to the licenses expressly granted herein by ON
+Semiconductor to Licensee, ON Semiconductor (and/or its licensors/suppliers) retains all rights, title
+and interest in and to the Software and all patents, copyrights, trademarks, trade secrets, and all other
+proprietary or intellectual rights therein. ON Semiconductor (and/or its licensors/suppliers) reserves all
+rights not expressly granted hereunder, and there are no implied licenses granted by ON
+Semiconductor hereunder. Certain elements of the Software may be provided in files/data formatted
+for use with or by certain third party software/tools/products. No licenses or rights to any such third
+party software/tools/products are granted to Licensee by ON Semiconductor. Licensee shall ensure
+that it has obtained all necessary licenses and rights to use any such third party
+software/tools/products which are necessary in order to utilize the Software.
+
+2.3         Restrictions. Except as expressly permitted in this Agreement, Licensee shall not use, copy or
+distribute the Software. The Software is the confidential information of ON Semiconductor (and/or its
+licensors/suppliers). Except as expressly permitted in this Agreement, Licensee shall not disclose, or
+allow access to, the Software to any third party. Licensee shall not itself and shall restrict Customers
+from: modifying, creating a derivative work of, decompiling, disassembling or reverse-engineering the
+Software (or any part thereof).
+
+2.4         Licensee acknowledges and agrees that Licensee is solely and wholly responsible and liable
+forthe Licensee Products, and any and all other products and/or services of Licensee, including without
+limitation, with respect to the installation, manufacturing, testing, distribution, use, support and/or
+maintenance of any of the foregoing.
+
+3.          Warranty Disclaimer.  THE SOFTWARE IS PROVIDED BY ON SEMICONDUCTOR TO LICENSEE
+HEREUNDER "AS IS" AND WITHOUT ANY REPRESENTATIONS OR WARRANTIES WHATSOEVER.
+WITHOUT LIMITING THE FOREGOING, ON SEMICONDUCTOR (AND ITS LICENSORS/SUPPLIERS) HEREBY
+DISCLAIMS ANY AND ALL REPRESENTATIONS AND WARRANTIES IN RELATION TO THE SOFTWARE, ANY
+MODIFICATIONS, OR THIS AGREEMENT,  WHETHER  EXPRESS,  IMPLIED,  STATUTORY  OR  OTHERWISE,
+INCLUDING WITHOUT LIMITATION ANY AND ALL REPRESENTATIONS AND WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, NON-INFRINGEMENT, AND THOSE
+ARISING FROM A COURSE OF DEALING, TRADE USAGE, TRADE CUSTOM OR TRADE PRACTICE.
+
+4.         No Support Obligation.  Licensee acknowledges and  agrees that  ON Semiconductor  (and  its
+licensors/suppliers) has no and shall have no obligation or responsibility whatsoever under this
+Agreement to provide to Licensee, Customers, or any third party, any maintenance, support or
+assistance ("Support"), including without limitation in relation to the Software or Licensee Products,
+and ON Semiconductor (and its licensors/suppliers) cannot and shall not be held liable or responsible
+to Licensee, Customers, or any third party for the failure to provide any such Support. Licensee is and
+shall be solely responsible and liable for any Licensee Products, and for testing the Software and
+Licensee Products, and for testing and implementation of the functionality of the Software with the
+Licensee Products.
+
+5.           Term and Termination.
+
+5.1         Term. This Agreement shall commence as of the first date the Software is used by Licensee and
+shall remain in effect for three (3) years from such date, unless earlier terminated as provided for
+herein. Thereafter, this Agreement shall renew automatically for additional one (1) year periods unless
+terminated by either party hereto with no less than sixty (60) days written notice of non-renewal to the
+other party prior to the end of the then current annual term.
+
+5.2         Termination by ON Semiconductor. ON Semiconductor shall have the right to terminate this
+Agreement upon written notice to Licensee for any reason or if: (i) Licensee commits a material breach
+of this Agreement and does not cure or remedy such breach within thirty (30) days after receipt of
+written notice of such breach from ON Semiconductor; or (ii) Licensee uses the Software outside of the
+scope of the Agreement; (iii) Licensee breaches its confidentiality obligations hereunder; or (iv)
+Licensee becomes the subject of a voluntary or involuntary petition in bankruptcy or any proceeding
+relating to insolvency, receivership, liquidation, or composition for the benefit of creditors if such
+petition or proceeding is not dismissed with prejudice within sixty (60) days after filing.
+
+5.3         Effect of Termination/Expiration. The following Sections of this Agreement shall survive the
+termination or expiration of this Agreement for any reason: 2.1, 2.2, 2.3, 2.4, 3, 4, 5, 7, 8, 9, 10, 11 and
+12. Any Software or modified Software used or copied pursuant to this Agreement prior to the
+effective date of such termination or expiration of this Agreement, shall not be effected solely by
+reason of such termination or expiration of this Agreement. Upon the effective date of termination of
+this Agreement, all licenses granted to Licensee hereunder shall terminate and Licensee shall cease all
+use, copying, modification and distribution of the Software and shall promptly either destroy or return
+to ON Semiconductor all copies of the Software in Licensee's possession or under Licensee's control.
+Within 30 days after the termination of the Agreement, Licensee shall furnish a statement certifying
+that all Software and related documentation have been destroyed or returned to ON Semiconductor.
+
+6.           Export. Licensee agrees that it shall comply fully with all relevant and applicable export laws
+and regulations of the United States or foreign governments ("Export Laws") to ensure that neither the
+Software, nor any direct product thereof is: (i) exported directly or indirectly, in violation of Export
+Laws; or (ii) intended to be used for any purposes prohibited by the Export Laws, including without
+limitation nuclear, chemical or biological weapons proliferation.
+
+7.           Limitation of Liability.  ON SEMICONDUCTOR (AND ITS LICENSORS/SUPPLIERS) SHALL NOT BE
+RESPONSIBLE OR LIABLE UNDER ANY CIRCUMSTANCES OR ANY LEGAL THEORY, WHETHER IN
+CONTRACT, TORT (INCLUDING NEGLIGENCE), STRICT LIABILITY OR OTHERWISE, FOR ANY LOST
+REVENUE OR PROFITS OR ANY OTHER COMMERCIAL OR ECONOMIC LOSS, OR FOR ANY DIRECT,
+INDIRECT, INCIDENTAL, CONSEQUENTIAL, EXEMPLARY, PUNITIVE OR SPECIAL DAMAGES WHATSOEVER
+ARISING OUT OF OR RELATING TO THE SOFTWARE, MODIFICATIONS, OR THIS AGREEMENT, EVEN IF
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGES, AND NOTWITHSTANDING ANY FAILURE OF
+ESSENTIAL PURPOSE OF ANY LIMITED REMEDY, TO THE FULL EXTENT SUCH MAY BE DISCLAIMED BY
+LAW.  ON SEMICONDUCTOR'S TOTAL LIABILITY FOR ANY AND ALL COSTS, DAMAGES, CLAIMS,
+INDEMNIFICABLE CLAIMS, OR LOSSES WHATSOEVER ARISING OUT OF OR IN CONNECTION WITH THIS
+AGREEMENT OR PRODUCTS SUPPLIED BY THIS AGREEMENT IS LIMITED TO THE AGGREGATE AMOUNT
+PAID BY LICENSEE TO ON SEMICONDUCTOR IN CONNECTION WITH THE SOFTWARE TO WHICH LOSSES
+OR DAMAGES ARE CLAIMED.
+
+8.         Indemnification. Licensee acknowledges and agrees that Licensee is solely and wholly
+responsible and liable for any and all modifications to the Software, Licensee Products, and any and all
+of Licensee's other products and/or services, including without limitation, with respect to the
+installation, manufacturing, testing, distribution, use, support and/or maintenance of any of the
+foregoing. Licensee shall, at Licensee's sole expense, defend, indemnify and hold harmless ON
+Semiconductor and its subsidiaries and affiliates from and against any and all claims, demands, suits,
+actions, and proceedings ("Claim(s)"), and all related damages, costs, and expenses (including
+reasonable attorneys fees), arising from, related to or in connection with any modifications, Licensee
+Products, and the Software in combination with modifications and/or Licensee Products, including
+without limitation, in relation to product liability or infringement of third party rights. ON
+Semiconductor shall: (a) notify Licensee promptly upon learning of such a Claim; (b) give Licensee
+reasonable information and assistance regarding such Claim; and (c) tender to Licensee authority to
+direct the defense of such Claim, including negotiation of any settlement in relation thereto, provided
+however that Licensee shall not enter into any such settlement without ON Semiconductor's express
+prior written consent, which consent shall not be unreasonably withheld.
+
+9.         Publicity.   Licensee agrees that it shall not issue any press releases containing, nor advertise,
+reference, reproduce, use or display, ON Semiconductor's name or any ON Semiconductor trademark
+without ON Semiconductor's express prior written consent in each instance; provided, however, that
+Licensee may indicate that the Licensee Product is interoperable with ON Semiconductor Products in
+product documentation and collateral material for the Licensee Product.
+
+10.          Performance Comparisons.  Licensee shall not distribute externally or disclose to any
+Customer or to any third party any reports or statements that directly compare the speed,
+functionality or other performance results or characteristics of the Software with any similar third
+party products without the express prior written consent of ON Semiconductor in each instance;
+provided, however, that Licensee may disclose such reports or statements to Licensee's consultants (i)
+that have a need to have access to such reports or statements for purposes of the license grant of this
+Agreement, and (ii) that have entered into a written confidentiality agreement with Licensee no less
+restrictive than the confidentiality obligations contained herein.
+
+11.         Miscellaneous.
+
+11.1       Governing Law.  This Agreement shall be governed by the laws of the State of New York, and
+applicable U.S. federal law, without giving effect to conflict of law or to choice of law principles, and
+excluding the 1980 United Nations Convention on Contracts for the International Sale of Goods, if
+applicable.
+
+11.2       Assignment.  Neither this Agreement, nor any of the rights or obligations herein, may be
+assigned or transferred by Licensee without the express prior written consent of ON Semiconductor,
+and any attempt to do so in violation of the foregoing shall be null and void. Subject to the foregoing,
+this Agreement shall be binding upon and inure to the benefit of the parties, their successors and
+assigns.
+
+11.3       Limitations on Use.   The Software is not designed, developed, licensed or provided for use in
+connection with any nuclear facility, or in connection with the flight, navigation or communication of
+aircraft or ground support equipment, or in connection with military or medical
+equipment/applications or activities, or any other inherently dangerous or high risk
+equipment/applications or activities ("High Risk Use"). Licensee agrees that ON Semiconductor (and its
+licensors/suppliers) shall not be liable or responsible for any claims, losses, demands, costs, expenses
+or liabilities whatsoever arising from or in relation to any such High Risk Use of the Software or
+Licensee Products by Licensee or Customers.
+
+11.4       Severability; Waiver.     Any provision of this Agreement which is held to be invalid or
+unenforceable by a court in any jurisdiction shall, as to such jurisdiction, be severed from this
+Agreement and ineffective to the extent of such invalidity or unenforceability without invalidating the
+remaining portions hereof or affecting the validity or enforceability of such provision in any other
+jurisdiction. Failure by either party hereto to enforce any term of this Agreement shall not be held a
+waiver of such term nor prevent enforcement of such term thereafter, unless and to the extent
+expressly set forth in a writing signed by the party charged with such waiver.
+
+11.5       Remedies Not Exclusive.  The remedies herein are not exclusive, but rather are cumulative and
+in addition to all other remedies available to ON Semiconductor.
+
+11.6       Records; Audit. Licensee agrees that it shall maintain accurate and complete records relating
+to its activities under this Agreement. Upon reasonable advance written notice, ON Semiconductor
+shall have the right to examine and audit such records and Licensee's compliance with the terms of this
+Agreement.
+
+11.7       No Joint Venture, Agency, etc. Nothing in this Agreement shall be construed as creating a joint
+venture, agency, partnership, trust or other similar association of any kind between the parties hereto.
+The parties hereto are, for all purposes of this Agreement, independent contractors, and neither shall
+hold itself out as having any authority to act as an agent or partner of the other party, or in any way
+bind or commit the other party to any obligations.
+
+11.8       Interpretation. In this Agreement, words importing a singular number only shall include the
+plural and vice versa, and section numbers and headings are for convenience of reference only and
+shall not affect the construction or interpretation hereof.
+
+11.9       Entire Agreement; Amendment; Counterparts; Facsimile Copies.  This Agreement, including
+the Exhibits attached hereto, constitutes the entire agreement and understanding between the parties
+hereto regarding the subject matter hereof and supersedes all other agreements, understandings,
+promises, representations or discussions, written or oral, between the parties regarding the subject
+matter hereof. This Agreement may not be amended except in writing signed by an authorized
+representative of each of the parties hereto. This Agreement may be executed in counterparts, each of
+which shall be deemed to be an original, and which together shall constitute one and the same
+agreement. Each party hereto may deliver an executed copy of this Agreement to the other party via
+facsimile or other electronic means, and such executed copy(ies) sent/received via facsimile or other
+electronic means shall be deemed an original and binding copy.
+
+12. 	Confidentiality.	Notwithstanding any terms to the contrary in any non-disclosure
+agreements between the Parties, Licensee shall treat this Agreement and the Software as ON
+Semiconductor's "Confidential Information" including:  not using the Confidential Information except
+as expressly set forth herein or otherwise authorized in writing; implementing reasonable procedures
+to prohibit the disclosure, unauthorized duplication, misuse or removal of the Confidential
+Information; and not disclosing the Confidential Information to any third party except as may be
+necessary and required in connection with the rights and obligations under this Agreement and subject
+to confidentiality obligations at least as protective as those set forth herein, or as otherwise required
+by law. It is expressly understood that all Confidential Information transferred hereunder, and all
+copies, modifications, and derivatives thereof, will remain the property of ON Semiconductor, and the
+Licensee is authorized to use those materials only in accordance with the terms and conditions of this
+Agreement.  Upon termination of this Agreement or upon written request, License shall either return
+all Confidential Information to ON Semiconductor along with all copies and/or derivatives made,
+including that on computer databases and copies of portions of the Confidential Information, or
+destroy all such Confidential Information and certify by written memorandum that all such Confidential
+Information has been destroyed.
+
+
+
+AP1302 ISP Firmware License Agreement
+Exhibit A
+
+
+"Affiliates" shall mean any entity controlling, controlled by, or under common control with a Party, but
+only so long as such control continues to exist. For the purposes of the foregoing, the term
+"controlling", "controlled" or "control" means the possession, directly or indirectly, of the power to
+direct or cause the direction of management or policies of a person, corporation or other entity
+whether through the ownership of voting securities, by contract or otherwise.  An entity shall be an
+Affiliate only during the time when such control exists.
+
+"Effective Date" means the date the Software was first downloaded, copied, installed or used by the
+Licensee.
+
+"Licensee Products" shall mean any of Licensee's products that include an ON Semiconductor Product.
+
+"ON Semiconductor Product" shall mean ON Semiconductor's AP1302 image signal processor ("ISP").
+
+"Software" means the AP1302 ISP firmware code (in binary format).
