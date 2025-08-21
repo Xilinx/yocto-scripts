@@ -1,38 +1,76 @@
-if [ -n "$BASH_SOURCE" ]; then
-	export ROOT=$(readlink -f $(dirname "$BASH_SOURCE"))
-elif [ -n "$ZSH_NAME" ]; then
-	export ROOT=$(readlink -f $(dirname "$0"))
-else
-	export ROOT=$(readlink -f ${PWD})
-fi
+#!/bin/sh
 
-export TEMPLATECONF=$ROOT/sources/meta-petalinux/conf/templates/default
-# Use the internal layer, if it's checked out
-if [ -d $ROOT/sources/meta-xilinx-internal ]; then
-    export TEMPLATECONF=$ROOT/sources/meta-xilinx-internal/conf/templates/default
-    if [ -d $ROOT/sources/meta-xilinx-restricted ]; then
-        export TEMPLATECONF=$ROOT/sources/meta-xilinx-internal/conf/templates/restricted
+# SDK Build Environment Setup Script
+#
+# Copyright (C) 2016-2022, Xilinx, Inc.  All rights reserved.
+# Copyright (C) 2022-2025, Advanced Micro Devices, Inc.  All rights reserved.
+#
+# SPDX-License-Identifier: MIT
+
+#
+# Normally this is called as '. ./setupsdk <builddir>'
+#
+# This works in most shells (not dash), but not all of them pass the arguments
+# when being sourced.  To workaround the shell limitation use "set <builddir>"
+# prior to sourcing this script.
+#
+FAIL=
+if [ -n "$BASH_SOURCE" ]; then
+    THIS_SCRIPT=$BASH_SOURCE
+elif [ -n "$ZSH_NAME" ]; then
+    THIS_SCRIPT=$0
+else
+    THIS_SCRIPT="$(pwd)/setupsdk"
+    if [ ! -e "$THIS_SCRIPT" ]; then
+        echo "Error: $THIS_SCRIPT doesn't exist!" >&2
+        echo "Please source this script in $(basename $THIS_SCRIPT)'s directory." >&2
+        FAIL=true
     fi
 fi
-export PATH=$PATH:$ROOT/scripts
-# For internal users gen-machine-conf path
-if [ -d $ROOT/sources/meta-xilinx-internal/meta-xilinx-core/gen-machine-conf ]; then
-	export PATH=$PATH:$ROOT/sources/meta-xilinx-internal/meta-xilinx-core/gen-machine-conf
-fi
-# For public users gen-machine-conf path
-if [ -d $ROOT/sources/meta-xilinx/meta-xilinx-core/gen-machine-conf ]; then
-        export PATH=$PATH:$ROOT/sources/meta-xilinx/meta-xilinx-core/gen-machine-conf
+
+#
+# This works in most shells (not dash)
+#
+if [ -z "$ZSH_NAME" ] && [ "$0" = "$THIS_SCRIPT" ]; then
+    echo "Error: This script needs to be sourced. Please run as '. $THIS_SCRIPT'" >&2
+    exit 1
 fi
 
-# Translate environment variables old to new
-if [ -n "${BB_ENV_WHITELIST}" ]; then
-   echo "WARNING: BB_ENV_WHITELIST is obsolete, please use BB_ENV_PASSTHROUGH"
-   export BB_ENV_PASSTHROUGH="${BB_ENV_WHITELIST}"
-   unset BB_ENV_WHITELIST
+if [ -z "$FAIL" ]; then
+    export ROOT=$(readlink -f $(dirname "$THIS_SCRIPT"))
+
+    export TEMPLATECONF=$ROOT/sources/meta-petalinux/conf/templates/default
+    # Use the internal layer, if it's checked out
+    if [ -d $ROOT/sources/meta-xilinx-internal ]; then
+        export TEMPLATECONF=$ROOT/sources/meta-xilinx-internal/conf/templates/default
+        if [ -d $ROOT/sources/meta-xilinx-restricted ]; then
+            export TEMPLATECONF=$ROOT/sources/meta-xilinx-internal/conf/templates/restricted
+        fi
+    fi
+    export PATH=$PATH:$ROOT/scripts
+    # For internal users gen-machine-conf path
+    if [ -d $ROOT/sources/meta-xilinx-internal/meta-xilinx-core/gen-machine-conf ]; then
+        export PATH=$PATH:$ROOT/sources/meta-xilinx-internal/meta-xilinx-core/gen-machine-conf
+    fi
+    # For public users gen-machine-conf path
+    if [ -d $ROOT/sources/meta-xilinx/meta-xilinx-core/gen-machine-conf ]; then
+        export PATH=$PATH:$ROOT/sources/meta-xilinx/meta-xilinx-core/gen-machine-conf
+    fi
+
+    # Translate environment variables old to new
+    if [ -n "${BB_ENV_WHITELIST}" ]; then
+        echo "WARNING: BB_ENV_WHITELIST is obsolete, please use BB_ENV_PASSTHROUGH"
+        export BB_ENV_PASSTHROUGH="${BB_ENV_WHITELIST}"
+        unset BB_ENV_WHITELIST
+    fi
+    if [ -n "${BB_ENV_EXTRAWHITE}" ]; then
+        echo "WARNING: BB_ENV_EXTRAWHITE is obsolete, please use BB_ENV_PASSTHROUGH_ADDITIONS"
+        export BB_ENV_PASSTHROUGH_ADDITIONS="${BB_ENV_EXTRAWHITE}"
+        unset BB_ENV_EXTRAWHITE
+    fi
+
+    # '.' is POSIX, 'source' is not, use 'source' for dash
+    # Fake it so we oe-init-build-env works in dash
+    BASH_SOURCE=$ROOT/sources/poky/oe-init-build-env
+    . $ROOT/sources/poky/oe-init-build-env "$@"
 fi
-if [ -n "${BB_ENV_EXTRAWHITE}" ]; then
-   echo "WARNING: BB_ENV_EXTRAWHITE is obsolete, please use BB_ENV_PASSTHROUGH_ADDITIONS"
-   export BB_ENV_PASSTHROUGH_ADDITIONS="${BB_ENV_EXTRAWHITE}"
-   unset BB_ENV_EXTRAWHITE
-fi
-source $ROOT/sources/poky/oe-init-build-env "$@"
